@@ -27,9 +27,4 @@ public class BaseTests {
         driver.quit();
     }
 
-    public static void main(String args[]) {
-        BaseTests test = new BaseTests();
-        test.setUp();
-    }
-
 }

@@ -6,9 +6,8 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class LoginPage {
+public class LoginPage extends BasePage {
 
-    private WebDriver driver;
     private WebElement loginForm;
     private WebElement loginFormHeading;
     private List<WebElement> loginFormFields;
@@ -21,7 +20,7 @@ public class LoginPage {
     private WebElement signInButton;
 
     public LoginPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
         this.loginForm = driver.findElement(By.id("login_form"));
         this.loginFormHeading = loginForm.findElement(By.tagName("h3"));
         this.loginFormFields = loginForm.findElements(By.className("form-group"));
@@ -44,6 +43,9 @@ public class LoginPage {
 
     public void enterLoginPassword(String text) { loginFormPasswordInput.sendKeys(text); }
 
-    public void clickSignIn() { signInButton.click(); }
+    public MyAccountPage clickSignIn() {
+        signInButton.click();
+        return new MyAccountPage(this.driver);
+    }
 
 }

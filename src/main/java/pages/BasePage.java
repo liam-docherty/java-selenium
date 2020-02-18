@@ -10,15 +10,22 @@ public class BasePage {
 
     protected WebDriver driver;
     private WebElement heading;
+    private WebElement logout;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
         this.heading = driver.findElement(By.tagName("h1"));
+        this.logout = driver.findElement(By.className("logout"));
     }
 
     public String getHeadingText() {
         waitForElementToBeVisible(heading);
         return heading.getText();
+    }
+
+    public void clickLogout() {
+        waitForElementToBeClickable(logout);
+        logout.click();
     }
 
     protected void waitForElementToBeVisible(WebElement element) {

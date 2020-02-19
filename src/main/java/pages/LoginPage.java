@@ -2,49 +2,64 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import java.util.List;
 
 public class LoginPage extends BasePage {
 
-    private WebElement loginForm;
-    private WebElement loginFormHeading;
-    private List<WebElement> loginFormFields;
-    private WebElement loginFormEmail;
-    private WebElement loginFormEmailLabel;
-    private WebElement loginFormEmailInput;
-    private WebElement loginFormPassword;
-    private WebElement loginFormPasswordLabel;
-    private WebElement loginFormPasswordInput;
-    private WebElement signInButton;
+    // TODO: Try to tidy up the label locators
+    private By loginFormHeading = By.cssSelector("#login_form .page-subheading");
+    private By loginFormEmailLabel = By.cssSelector(".form-group:nth-child(1) label");
+    private By loginFormEmailInput = By.id("email");
+    private By loginFormPasswordLabel = By.cssSelector(".form-group+ .form-group label");
+    private By loginFormPasswordInput = By.id("passwd");
+    private By forgotPasswordLink = By.cssSelector("#login_form a");
+    private By signInButton = By.id("SubmitLogin");
 
     public LoginPage(WebDriver driver) {
         super(driver);
-        this.loginForm = driver.findElement(By.id("login_form"));
-        this.loginFormHeading = loginForm.findElement(By.tagName("h3"));
-        this.loginFormFields = loginForm.findElements(By.className("form-group"));
-        this.loginFormEmail = loginFormFields.get(0);
-        this.loginFormEmailLabel = loginFormEmail.findElement(By.tagName("label"));
-        this.loginFormEmailInput = driver.findElement(By.id("email"));
-        this.loginFormPassword = loginFormFields.get(1);
-        this.loginFormPasswordLabel = loginFormPassword.findElement(By.tagName("label"));
-        this.loginFormPasswordInput = driver.findElement(By.id("passwd"));
-        this.signInButton = driver.findElement(By.id("SubmitLogin"));
     }
 
-    public String getLoginEmailLabel() {
-        return loginFormEmailLabel.getText();
+    public String getLoginFormHeadingText() {
+        return getText(loginFormHeading);
+    }
+
+    public String getLoginEmailLabelText() {
+        return getText(loginFormEmailLabel);
+    }
+
+    public String getLoginEmailInputValue() {
+        return getValue(loginFormEmailInput);
     }
 
     public void enterLoginEmail(String text) {
-        loginFormEmailInput.sendKeys(text);
+        enterText(loginFormEmailInput, text);
     }
 
-    public void enterLoginPassword(String text) { loginFormPasswordInput.sendKeys(text); }
+    public String getLoginPasswordLabelText() {
+        return getText(loginFormPasswordLabel);
+    }
 
-    public MyAccountPage clickSignIn() {
-        signInButton.click();
+    public void enterLoginPassword(String text) {
+        enterText(loginFormPasswordInput, text);
+    }
+
+    public String getLoginPasswordInputValue() {
+        return getValue(loginFormPasswordInput);
+    }
+
+    public String getForgotPasswordText() {
+        return getText(forgotPasswordLink);
+    }
+
+    public String getForgotPasswordHref() {
+        return getHref(forgotPasswordLink);
+    }
+
+    public String getSignInButtonText() {
+        return getText(signInButton);
+    }
+
+    public MyAccountPage clickSignInButton() {
+        click(signInButton);
         return new MyAccountPage(this.driver);
     }
 

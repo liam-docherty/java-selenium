@@ -25,6 +25,7 @@ public class LoginTests extends BaseTests {
         loginPage.enterLoginEmail("ldtest1@test.com");
         loginPage.enterLoginPassword("Test1234");
         MyAccountPage myAccountPage = loginPage.clickSignInButton();
+        // TODO: Change this assertion to be URL
         assertEquals(myAccountPage.getHeadingText(), "MY ACCOUNT");
         // TODO: Move to a teardown style method
         myAccountPage.clickLogout();

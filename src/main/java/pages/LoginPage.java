@@ -59,6 +59,7 @@ public class LoginPage extends BasePage {
     }
 
     public MyAccountPage clickSignInButton() {
+        // TODO: This can't return MyAccountPage because of unsuccessful login attempts
         click(signInButton);
         return new MyAccountPage(this.driver);
     }

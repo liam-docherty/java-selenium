@@ -1,7 +1,6 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 public class LoginPage extends BasePage {
 
@@ -14,8 +13,8 @@ public class LoginPage extends BasePage {
     private By forgotPasswordLink = By.cssSelector("#login_form a");
     private By signInButton = By.id("SubmitLogin");
 
-    public LoginPage(WebDriver driver) {
-        super(driver);
+    public void goTo() {
+        driver.get(BASE_URL + "?controller=authentication&back=my-account");
     }
 
     public String getLoginFormHeadingText() {
@@ -61,7 +60,7 @@ public class LoginPage extends BasePage {
     public MyAccountPage clickSignInButton() {
         // TODO: This can't return MyAccountPage because of unsuccessful login attempts
         click(signInButton);
-        return new MyAccountPage(this.driver);
+        return new MyAccountPage();
     }
 
 }

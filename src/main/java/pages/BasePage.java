@@ -8,13 +8,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage {
 
-    protected WebDriver driver;
+    protected static WebDriver driver;
+    protected static final String BASE_URL = "http://automationpractice.com/index.php";
+
     private By heading = By.tagName("h1");
     private By logout = By.className("logout");
 
-
-    public BasePage(WebDriver driver) {
-        this.driver = driver;
+    public void setWebDriver(WebDriver driver) {
+        BasePage.driver = driver;
     }
 
     public String getHeadingText() {

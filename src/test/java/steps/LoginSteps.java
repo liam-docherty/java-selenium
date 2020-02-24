@@ -3,9 +3,6 @@ package steps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import pages.LoginPage;
 import pages.MyAccountPage;
 
@@ -13,26 +10,31 @@ import static org.testng.Assert.assertEquals;
 
 public class LoginSteps {
 
-    private WebDriver driver;
-    private LoginPage loginPage;
-    private MyAccountPage myAccountPage;
+    private LoginPage loginPage = new LoginPage();
+    private MyAccountPage myAccountPage = new MyAccountPage();
 
     @Given("^I am on the Authentication page$")
     public void i_am_on_the_authentication_page() {
-        System.setProperty("webdriver.chrome.driver", "resources/chromedriver");
-        driver = new ChromeDriver();
-        Dimension size = new Dimension(1024, 786);
-        driver.manage().window().setSize(size);
-        // TODO: This declaration will be moved, we should go to the homepage instead of login
-        driver.get("http://automationpractice.com/index.php?controller=authentication&back=my-account");
-        loginPage = new LoginPage(driver);
+        loginPage.goTo();
     }
 
     @When("^I submit valid credentials$")
     public void i_submit_valid_credentials() {
         loginPage.enterLoginEmail("ldtest1@test.com");
         loginPage.enterLoginPassword("Test1234");
-        myAccountPage = loginPage.clickSignInButton();
+        loginPage.clickSignInButton();
+    }
+
+    @Then("^I should be presented with the option to login$")
+    public void i_should_be_presented_with_the_option_to_login() {
+        assertEquals(loginPage.getLoginFormHeadingText(), "ALREADY REGISTERED?");
+        assertEquals(loginPage.getLoginEmailLabelText(), "Email address");
+        assertEquals(loginPage.getLoginEmailInputValue(), "");
+        assertEquals(loginPage.getLoginPasswordLabelText(), "Password");
+        assertEquals(loginPage.getLoginPasswordInputValue(), "");
+        assertEquals(loginPage.getForgotPasswordText(), "Forgot your password?");
+        assertEquals(loginPage.getForgotPasswordHref(), "http://automationpractice.com/index.php?controller=password");
+        assertEquals(loginPage.getSignInButtonText(), "Sign in");
     }
 
     @Then("^I am redirected to My Account$")

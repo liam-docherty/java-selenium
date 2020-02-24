@@ -6,6 +6,9 @@ Feature: Login
   Background:
     Given I am on the Authentication page
 
-    Scenario: Successful login
-      When I submit valid credentials
-      Then I am redirected to My Account
+  Scenario: Login form contents
+    Then I should be presented with the option to login
+
+  Scenario: Successful login redirects to My Account
+    When I submit valid credentials
+    Then I am redirected to My Account

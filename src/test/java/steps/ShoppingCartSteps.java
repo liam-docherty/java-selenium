@@ -25,5 +25,4 @@ public class ShoppingCartSteps {
         assertEquals(shoppingCartPage.getEmptyCartAlertText(), string);
     }
 
-
 }

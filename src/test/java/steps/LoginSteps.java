@@ -41,7 +41,7 @@ public class LoginSteps {
     public void i_am_redirected_to_my_account() {
 
         // TODO: Change this assertion to be URL
-        assertEquals(myAccountPage.getHeadingText(), "MY ACCOUNT!");
+        assertEquals(myAccountPage.getHeadingText(), "MY ACCOUNT");
         // TODO: Move to a teardown style method
         myAccountPage.clickLogout();
     }

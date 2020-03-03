@@ -2,6 +2,11 @@
 ## TODO
 Include example of dropdown page object interactions. "Sort by" is an example of this: http://automationpractice.com/index.php?id_category=3&controller=category
 
+## Known Limitations
+* Tests are only run in Chrome.
+* Login is performed through the UI. Ideally an API call or creation of a cookie would be used instead.
+* An account has been registered manually that is used for login. Ideally this would be setup and deleted before all tests are ran.
+
 ## Page Object Model
 The tests utilise the [Page Object Model](https://www.pluralsight.com/guides/getting-started-with-page-object-pattern-for-your-selenium-tests) design pattern.<p>
 All pages extend from one [`BasePage`](src/main/java/pages/BasePage.java) class that holds common methods e.g. `getHeadingText()`.<p>

@@ -40,11 +40,9 @@ public class LoginSteps {
 
     @Then("^I am redirected to My Account$")
     public void i_am_redirected_to_my_account() {
-
-        // TODO: Change this assertion to be URL
         assertEquals(myAccountPage.getHeadingText(), "MY ACCOUNT");
-        // TODO: Move to a teardown style method
-        myAccountPage.clickLogout();
+        // TODO: Create a constants file with list of urls for site
+        assertEquals(myAccountPage.getCurrentUrl(), "http://automationpractice.com/index.php?controller=my-account");
     }
 
 }

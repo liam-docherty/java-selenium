@@ -18,6 +18,8 @@ public class BasePage {
         BasePage.driver = driver;
     }
 
+    public String getCurrentUrl() { return driver.getCurrentUrl(); }
+
     public String getHeadingText() {
         return getText(heading);
     }

@@ -7,6 +7,8 @@ import pages.LoginPage;
 import pages.MyAccountPage;
 
 import static org.testng.Assert.assertEquals;
+import static pages.PageUrls.FORGOT_PASSWORD_URL;
+import static pages.PageUrls.MY_ACCOUNT_URL;
 
 public class LoginSteps {
 
@@ -34,15 +36,14 @@ public class LoginSteps {
         assertEquals(loginPage.getLoginPasswordLabelText(), "Password");
         assertEquals(loginPage.getLoginPasswordInputValue(), "");
         assertEquals(loginPage.getForgotPasswordText(), "Forgot your password?");
-        assertEquals(loginPage.getForgotPasswordHref(), "http://automationpractice.com/index.php?controller=password");
+        assertEquals(loginPage.getForgotPasswordHref(), FORGOT_PASSWORD_URL);
         assertEquals(loginPage.getSignInButtonText(), "Sign in");
     }
 
     @Then("^I am redirected to My Account$")
     public void i_am_redirected_to_my_account() {
         assertEquals(myAccountPage.getHeadingText(), "MY ACCOUNT");
-        // TODO: Create a constants file with list of urls for site
-        assertEquals(myAccountPage.getCurrentUrl(), "http://automationpractice.com/index.php?controller=my-account");
+        assertEquals(myAccountPage.getCurrentUrl(), MY_ACCOUNT_URL);
     }
 
 }

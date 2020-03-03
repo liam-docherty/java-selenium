@@ -13,6 +13,14 @@ All pages extend from one [`BasePage`](src/main/java/pages/BasePage.java) class 
 The [`PageUrls`](src/main/java/pages/PageUrls.java) class acts as 'constants file' to hold URLs which are used in the page objects and in the tests themselves. 
 
 ## Run Tests
+### Environment Variables
+As mentioned in the known limitations above, the tests require an already registered account.<p>
+The tests require environment variables that store this account's email address and password.<p>
+Once an account has been registered manually, you must first set the following environment variables:
+* REGISTERED_USER_EMAIL
+* REGISTERED_USER_PASSWORD
+
+### Executing Tests
 To run all tests run `mvn clean test` in the command line.<p>
 This will run all tests and generate reports in the [`target/cucumber-reports`](target/cucumber-reports) directory.
 

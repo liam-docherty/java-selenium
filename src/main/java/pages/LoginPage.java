@@ -57,10 +57,6 @@ public class LoginPage extends BasePage {
         return getText(signInButton);
     }
 
-    public MyAccountPage clickSignInButton() {
-        // TODO: This can't return MyAccountPage because of unsuccessful login attempts
-        click(signInButton);
-        return new MyAccountPage();
-    }
+    public void clickSignInButton() { click(signInButton); }
 
 }

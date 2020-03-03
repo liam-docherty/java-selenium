@@ -4,10 +4,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -28,15 +25,17 @@ public class TestRunner extends AbstractTestNGCucumberTests {
     protected static BasePage basePage;
 
     @BeforeClass
-    public static void launchApplication() {
+    public static void openBrowser() {
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver");
         driver = new ChromeDriver();
+        Dimension size = new Dimension(1024, 786);
+        driver.manage().window().setSize(size);
         basePage = new BasePage();
         basePage.setWebDriver(driver);
     }
 
     @After
-    public void embedScreenshot(Scenario scenario) {
+    public static void embedScreenshotInReport(Scenario scenario) {
         if (scenario.isFailed()) {
             try {
                 byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
@@ -48,6 +47,9 @@ public class TestRunner extends AbstractTestNGCucumberTests {
             }
         }
     }
+
+    @After
+    public static void clearCookies() { driver.manage().deleteAllCookies(); }
 
     @AfterClass
     public static void closeBrowser() {

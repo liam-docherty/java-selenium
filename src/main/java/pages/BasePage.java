@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BasePage {
 
     protected static WebDriver driver;
-    protected static final String BASE_URL = "http://automationpractice.com/index.php";
 
     private By heading = By.tagName("h1");
     private By logout = By.className("logout");
@@ -17,6 +16,8 @@ public class BasePage {
     public void setWebDriver(WebDriver driver) {
         BasePage.driver = driver;
     }
+
+    public String getCurrentUrl() { return driver.getCurrentUrl(); }
 
     public String getHeadingText() {
         return getText(heading);
@@ -51,7 +52,6 @@ public class BasePage {
         return driver.findElement(by).getAttribute("href");
     }
 
-    // TODO: Combine these into a common method that declares element and wait
     private void waitForElementToBeVisible(By by) {
         WebElement element = driver.findElement(by);
         WebDriverWait wait = new WebDriverWait(driver, 5);

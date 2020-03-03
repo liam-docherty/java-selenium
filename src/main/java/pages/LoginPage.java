@@ -2,9 +2,10 @@ package pages;
 
 import org.openqa.selenium.By;
 
+import static pages.PageUrls.LOGIN_URL;
+
 public class LoginPage extends BasePage {
 
-    // TODO: Try to tidy up the label locators
     private By loginFormHeading = By.cssSelector("#login_form .page-subheading");
     private By loginFormEmailLabel = By.cssSelector(".form-group:nth-child(1) label");
     private By loginFormEmailInput = By.id("email");
@@ -13,9 +14,7 @@ public class LoginPage extends BasePage {
     private By forgotPasswordLink = By.cssSelector("#login_form a");
     private By signInButton = By.id("SubmitLogin");
 
-    public void goTo() {
-        driver.get(BASE_URL + "?controller=authentication&back=my-account");
-    }
+    public void goTo() { driver.get(LOGIN_URL); }
 
     public String getLoginFormHeadingText() {
         return getText(loginFormHeading);
@@ -57,10 +56,6 @@ public class LoginPage extends BasePage {
         return getText(signInButton);
     }
 
-    public MyAccountPage clickSignInButton() {
-        // TODO: This can't return MyAccountPage because of unsuccessful login attempts
-        click(signInButton);
-        return new MyAccountPage();
-    }
+    public void clickSignInButton() { click(signInButton); }
 
 }

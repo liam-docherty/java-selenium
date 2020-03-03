@@ -7,6 +7,8 @@ import pages.LoginPage;
 import pages.MyAccountPage;
 
 import static org.testng.Assert.assertEquals;
+import static pages.PageUrls.FORGOT_PASSWORD_URL;
+import static pages.PageUrls.MY_ACCOUNT_URL;
 
 public class LoginSteps {
 
@@ -20,8 +22,8 @@ public class LoginSteps {
 
     @When("^I submit valid credentials$")
     public void i_submit_valid_credentials() {
-        loginPage.enterLoginEmail("ldtest1@test.com");
-        loginPage.enterLoginPassword("Test1234");
+        loginPage.enterLoginEmail(System.getenv("REGISTERED_USER_EMAIL"));
+        loginPage.enterLoginPassword(System.getenv("REGISTERED_USER_PASSWORD"));
         loginPage.clickSignInButton();
     }
 
@@ -33,17 +35,14 @@ public class LoginSteps {
         assertEquals(loginPage.getLoginPasswordLabelText(), "Password");
         assertEquals(loginPage.getLoginPasswordInputValue(), "");
         assertEquals(loginPage.getForgotPasswordText(), "Forgot your password?");
-        assertEquals(loginPage.getForgotPasswordHref(), "http://automationpractice.com/index.php?controller=password");
+        assertEquals(loginPage.getForgotPasswordHref(), FORGOT_PASSWORD_URL);
         assertEquals(loginPage.getSignInButtonText(), "Sign in");
     }
 
     @Then("^I am redirected to My Account$")
     public void i_am_redirected_to_my_account() {
-
-        // TODO: Change this assertion to be URL
         assertEquals(myAccountPage.getHeadingText(), "MY ACCOUNT");
-        // TODO: Move to a teardown style method
-        myAccountPage.clickLogout();
+        assertEquals(myAccountPage.getCurrentUrl(), MY_ACCOUNT_URL);
     }
 
 }

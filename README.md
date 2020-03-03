@@ -2,6 +2,11 @@
 ## TODO
 Include example of dropdown page object interactions. "Sort by" is an example of this: http://automationpractice.com/index.php?id_category=3&controller=category
 
+## Page Object Model
+The tests utilise the [Page Object Model](https://www.pluralsight.com/guides/getting-started-with-page-object-pattern-for-your-selenium-tests) design pattern.<p>
+All pages extend from one [`BasePage`](src/main/java/pages/BasePage.java) class that holds common methods e.g. `getHeadingText()`.<p>
+The [`PageUrls`](src/main/java/pages/PageUrls.java) class acts as 'constants file' to hold URLs which are used in the page objects and in the tests themselves. 
+
 ## Run Tests
 To run all tests run `mvn clean test` in the command line.<p>
 This will run all tests and generate reports in the [`target/cucumber-reports`](target/cucumber-reports) directory.

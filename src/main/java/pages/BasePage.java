@@ -52,7 +52,6 @@ public class BasePage {
         return driver.findElement(by).getAttribute("href");
     }
 
-    // TODO: Combine these into a common method that declares element and wait
     private void waitForElementToBeVisible(By by) {
         WebElement element = driver.findElement(by);
         WebDriverWait wait = new WebDriverWait(driver, 5);

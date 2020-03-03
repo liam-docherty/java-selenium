@@ -18,6 +18,7 @@ public class LoginSteps {
         loginPage.goTo();
     }
 
+    // TODO: Use environment variable here instead
     @When("^I submit valid credentials$")
     public void i_submit_valid_credentials() {
         loginPage.enterLoginEmail("ldtest1@test.com");

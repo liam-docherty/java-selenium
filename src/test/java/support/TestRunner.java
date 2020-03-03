@@ -49,6 +49,9 @@ public class TestRunner extends AbstractTestNGCucumberTests {
         }
     }
 
+    @After
+    public void clearCookies() { driver.manage().deleteAllCookies(); }
+
     @AfterClass
     public static void closeBrowser() {
         driver.quit();

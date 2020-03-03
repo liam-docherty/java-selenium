@@ -6,7 +6,6 @@ import static pages.PageUrls.LOGIN_URL;
 
 public class LoginPage extends BasePage {
 
-    // TODO: Try to tidy up the label locators
     private By loginFormHeading = By.cssSelector("#login_form .page-subheading");
     private By loginFormEmailLabel = By.cssSelector(".form-group:nth-child(1) label");
     private By loginFormEmailInput = By.id("email");

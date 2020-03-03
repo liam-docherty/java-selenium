@@ -2,6 +2,8 @@ package pages;
 
 import org.openqa.selenium.By;
 
+import static pages.PageUrls.LOGIN_URL;
+
 public class LoginPage extends BasePage {
 
     // TODO: Try to tidy up the label locators
@@ -13,9 +15,7 @@ public class LoginPage extends BasePage {
     private By forgotPasswordLink = By.cssSelector("#login_form a");
     private By signInButton = By.id("SubmitLogin");
 
-    public void goTo() {
-        driver.get(BASE_URL + "?controller=authentication&back=my-account");
-    }
+    public void goTo() { driver.get(LOGIN_URL); }
 
     public String getLoginFormHeadingText() {
         return getText(loginFormHeading);

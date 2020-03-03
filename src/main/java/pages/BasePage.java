@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BasePage {
 
     protected static WebDriver driver;
-    protected static final String BASE_URL = "http://automationpractice.com/index.php";
 
     private By heading = By.tagName("h1");
     private By logout = By.className("logout");

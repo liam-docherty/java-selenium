@@ -15,7 +15,7 @@ public class LoginSteps {
     private LoginPage loginPage = new LoginPage();
     private MyAccountPage myAccountPage = new MyAccountPage();
 
-    @Given("^I am on the Authentication page$")
+    @Given("^I am on the authentication page$")
     public void i_am_on_the_authentication_page() {
         loginPage.goTo();
     }

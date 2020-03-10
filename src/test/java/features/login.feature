@@ -4,7 +4,7 @@ Feature: Login
   Basic login functionality
 
   Background:
-    Given I am on the Authentication page
+    Given I am on the authentication page
 
   Scenario: Login form contents
     Then I should be presented with the option to login
